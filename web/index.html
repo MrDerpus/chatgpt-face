@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ava Assist v2.0.0</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+	<div id="container"> 
+		<!-- Chat Section -->
+		<div id="chat">
+			<textarea id="chat-history" readonly>
+			</textarea>
+		</div>
+
+		<!-- Input and Assistant Face Section -->
+		<div id="holding">
+			<div id="inputs">
+				<button id="send">Send</button>
+				<textarea type="text" placeholder="Ava Assist awaits . . ." id="user-input"></textarea>
+			</div>
+
+			<div id="assistant-face">
+				<img src="gpt-face/facee.png"                          class="face" alt="face">
+				<img src="gpt-face/normal-eyebrows2.png" id="eyebrows" class="face" alt="eyebrows">
+				<img src="gpt-face/normal-eyes.png"      id="eyes"     class="face" alt="eyes">
+				<img src="gpt-face/button-mouth.png"     id="mouth"    class="face" alt="mouth">
+				<img src="gpt-face/blush0.png"           id="blush"    class="face" alt="blush">
+			</div>
+		</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="eel.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</html>

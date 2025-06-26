@@ -1,0 +1,213 @@
+{
+  "object": "list",
+  "data": [
+    {
+      "object": "engine",
+      "id": "o1-mini-2024-09-12",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "dall-e-2",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "gpt-3.5-turbo-instruct",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "babbage-002",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "davinci-002",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "gpt-4o-mini-2024-07-18",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "gpt-4o-mini",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "whisper-1",
+      "ready": true,
+      "owner": "openai-internal",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "dall-e-3",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "text-embedding-3-small",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "gpt-3.5-turbo-16k",
+      "ready": true,
+      "owner": "openai-internal",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "omni-moderation-latest",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "omni-moderation-2024-09-26",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "tts-1-hd-1106",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "o1-mini",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "gpt-3.5-turbo",
+      "ready": true,
+      "owner": "openai",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "gpt-3.5-turbo-0125",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "o1-preview",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "o1-preview-2024-09-12",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "tts-1-hd",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "text-embedding-ada-002",
+      "ready": true,
+      "owner": "openai-internal",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "gpt-3.5-turbo-1106",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "tts-1",
+      "ready": true,
+      "owner": "openai-internal",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "tts-1-1106",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "gpt-3.5-turbo-instruct-0914",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    },
+    {
+      "object": "engine",
+      "id": "text-embedding-3-large",
+      "ready": true,
+      "owner": "system",
+      "permissions": null,
+      "created": null
+    }
+  ]
+}

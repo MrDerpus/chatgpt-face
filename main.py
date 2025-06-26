@@ -1,48 +1,127 @@
 from rich.traceback import install; install(show_locals=True)
 from rich.console import Console; Print = Console().print
 
-import eel
-from settings import respond, save_chat, read_all, remove_emojis, get_data
-
-#import base64
-#import requests
-#import json
-#import os
-
-# Initialize Eel with the 'web' directory
-eel.init('web')
-
-@eel.expose()
-def start_conversation():
-	'''
-	Start the conversation by reading personality and memory files, if available,
-	and preparing the assistant's initial response.
-	'''
-	# Read all files into one string for initial conversation setup
-	combined_data = read_all(files=['personality.txt', 'memory.txt'])
-	return combined_data
-
-@eel.expose()
-def handle_user_input(assistant_reply):
-    '''
-	Commands that the user can use
-	'''
-
-    allowed_commands = ['echo', 'mkdir', 'touch', 'cd']
-    pass
 
 
-# allow user to upload images:
-'''
-@eel.expose()
-def encode_image_to_data_uri(path, mime_type='image/png'):
-	with open(path, 'rb') as f:
-		b64 = base64.b64encode(f.read()).decode('utf-8')
-	return f'data:{mime_type};base64,{b64}'
-#image_data_uri = encode_image_to_data_uri('path/to/image.png')  # replace with your image path and correct mime type
-'''
+from settings import app, assistant_functions
+
+import openai # type: ignore
 
 
 
-# Start the Eel server, serving the 'index.html' file
-eel.start('index.html', size=(800, 800), mode='edge')
+Print('Initialising...')
+
+# Set your API key directly on the openai module
+openai.api_key = "ENTER OPEN AI  API KEY HERE."
+
+
+tokens:int  = 2048
+temp:float  = 0.7
+colour:str  = '#aa00bb'
+content:str =  ''
+
+Print('Reading personality file...')
+with open('personality.txt', encoding='utf-8') as FILE:
+	for line in FILE:
+		content += f'{line.strip()} '
+
+content += '\nThis is now our entire chat history:\n'
+
+Print('Reading memory file...')
+with open('memory.txt', encoding='utf-8') as FILE:
+	for line in FILE:
+		content += f'{line.strip()} '
+
+
+
+# set up and first response
+
+messages = [{"role": "system", "content": content}]
+messages.append({"role": "user", "content": app.first_message})
+
+response = openai.ChatCompletion.create(
+	model="gpt-4o-mini", messages=messages,
+	max_tokens=tokens,   temperature=temp
+)
+reply = response.choices[0].message.content
+messages.append({"role": "assistant", "content": reply})
+Print(f'\nAssistant: \n{reply}\n', style=colour)
+app.save_chat('Assistant', reply)
+reply = app.remove_emojis(reply)
+assistant_functions.speak(reply)
+
+
+
+
+
+
+
+while(True):
+	user_input = input('\nYou:\n').strip()
+
+	if(len(user_input) == 0): continue
+
+	# Commands
+	if(user_input[0] == '@'):
+		
+
+		# Handle commands here if you need to
+		# For example, if @quit, break the loop
+		#line = line.replace(',', '')
+		line = user_input[1:].split()
+
+		#@read file-here.txt
+		if(len(line) == 2):
+			command  = line[0]
+			argument = line[1:]
+
+
+			match command:
+				case 'read':
+					contents = assistant_functions.read(argument)
+					user_input = contents
+					#app.save_chat('User-action', f'{user_input}\n{contents}')
+					#messages.append({"role": "user", "content": contents})
+
+
+		if(len(line) == 3):
+			command  = line[0]
+			variable = line[1]
+			argument = line[2]
+			match command:
+				case 'set':
+					print(f' Changing {variable} value from {eval(variable)} to {argument}')
+					match variable:
+						case 'tokens': tokens = int(argument)
+						case 'temp':   temp   = float(argument)
+						case 'colour': colour = str(argument)
+					continue
+
+
+
+
+
+
+
+	# ChatGPT
+	# User message
+	app.save_chat('User', user_input)
+	messages.append({"role": "user", "content": user_input})
+
+
+
+
+
+	# Call the ChatCompletion endpoint directly
+	response = openai.ChatCompletion.create(
+		model="gpt-4o-mini", messages=messages,
+		max_tokens=tokens,   temperature=temp
+	)
+
+	reply = str(response.choices[0].message.content).strip()
+	Print(f'\nAssistant: \n{reply}\n', style=colour)
+	messages.append({"role": "assistant", "content": reply})
+
+	app.save_chat('Assistant', reply)
+	reply = app.remove_emojis(reply)
+	assistant_functions.speak(reply)
